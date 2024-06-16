@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apartment Listings</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Styles for modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <header class="bg-blue-800 text-white shadow-lg">
+    <nav class="container mx-auto p-4">
+      <ul class="flex space-x-4">
+        <li><a href="index.html" class="hover:underline">HOME</a></li>
+        <li><a href="listings.html" class="hover:underline">LISTINGS</a></li>
+        <li><a href="about.html" class="hover:underline">ABOUT US</a></li>
+        <li><a href="contact.html" class="hover:underline">CONTACT US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container mx-auto py-10">
+    <h1 class="text-3xl font-bold mb-6">Apartment Listings</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Apartment 1 -->
+      <div class="apartment bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-2">Modern Urban Loft</h3>
+        <p class="text-gray-700 mb-1">Location: City Center, Dar es Salaam</p>
+        <p class="text-gray-700 mb-4">Price: $2500/month</p>
+        <button onclick="toggleDetails('details1')" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block">Details</button>
+        <div id="details1" class="hidden mt-4">
+          <p>Description: Luxurious loft in City Center, Dar es Salaam. Spacious, bright, top-tier amenities, and stunning city views. Perfect urban living.</p>
+        </div>
+        <button onclick="openModal('modal1')" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block ml-4">Book Now</button>
+        <img src="Assets/loft.jpg" alt="Apartment Image" class="mt-4">
+      </div>
+
+      <!-- Apartment 2 -->
+      <div class="apartment bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-2">Cozy Suburban Home</h3>
+        <p class="text-gray-700 mb-1">Location: Suburbia Estates, Dar es Salaam</p>
+        <p class="text-gray-700 mb-4">Price: $1800/month</p>
+        <button onclick="toggleDetails('details2')" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block">Details</button>
+        <div id="details2" class="hidden mt-4">
+          <p>Description: Charming home in Suburbia Estates, Dar es Salaam. Comfortable, family-friendly, with a large garden and modern amenities. Ideal for peaceful living</p>
+        </div>
+        <button onclick="openModal('modal1')" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block ml-4">Book Now</button>
+        <img src="Assets/Suburban.jpg" alt="Apartment Image" class="mt-4">
+      </div>
+
+      <!-- Apartment 3 -->
+      <div class="apartment bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-2">Modern City View Apartment</h3>
+        <p class="text-gray-700 mb-1"><strong>Location:</strong> Skyline Towers, Urban District, Dar es Salaam</p>
+        <p class="text-gray-700 mb-4">Price: $3000/month</p>
+        <button onclick="toggleDetails('details3')" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block">Details</button>
+        <div id="details3" class="hidden mt-4">
+          <p>Description: Stylish apartment in Skyline Towers, Urban District, Dar es Salaam. Panoramic city views, contemporary design, and premium facilities. Perfect for upscale urban living.</p>
+        </div>
+        <button onclick="openModal('modal1')" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block ml-4">Book Now</button>
+        <img src="Assets/Modern.jpg" alt="Apartment Image" class="mt-4">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Booking -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2 class="text-2xl font-bold mb-4">Booking Form</h2>
+      <form id="bookingForm" onsubmit="return validateForm()" method="POST">
+        <label class="block mb-2">Name:</label>
+        <input type="text" id="name" name="name" class="w-full p-2 mb-4">
+
+        <label class="block mb-2">Email:</label>
+        <input type="email" id="email" name="email" class="w-full p-2 mb-4">
+
+        <label class="block mb-2">Message:</label>
+        <textarea id="message" name="message" rows="4" class="w-full p-2 mb-4"></textarea>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-blue-800 text-white text-center p-6 mt-10">
+    <p class="mb-2">Contact us: gcyprian18@gmail.com</p>
+    <p>&copy; 2024. Developed by GOSBERTH G, ABDUL Y & AGAPITE</p>
+  </footer>
+
+  <script>
+    // Function to toggle details visibility
+    function toggleDetails(id) {
+      const details = document.getElementById(id);
+      details.classList.toggle('hidden');
+    }
+
+    // Functions for modal control
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'block';
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'none';
+    }
+
+    // Form validation function
+    function validateForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+        alert('Please fill in all fields.');
+        return false;
+      }
+
+      // Additional validation logic can be added here
+
+      return true;
+    }
+  </script>
+</body>
+</html>

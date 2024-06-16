@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apartment Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.2.2/cdn.min.js" defer></script>
+  <style>
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      0% {
+        transform: translateX(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .animated-heading {
+      animation: slideInLeft 1s ease-out forwards;
+    }
+
+    .animated-subheading {
+      animation: slideInRight 1s ease-out forwards;
+    }
+
+    body {
+      background-image: url('Assets/background.jpg'); /* Update with the correct path to your image */
+      background-size: cover;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    .intro-section {
+      position: relative;
+      color: white;
+      overflow: hidden;
+    }
+
+    .intro-section video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    .intro-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Optional: To darken the video for better text visibility */
+      z-index: 1;
+    }
+
+    .intro-section > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple-animation 0.6s linear;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    .apartment {
+      transition: transform 0.3s ease;
+    }
+
+    .apartment:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <header class="bg-blue-800 text-white shadow-lg">
+    <nav class="container mx-auto p-4">
+      <ul class="flex space-x-4">
+        <li><a href="index.html" class="hover:underline">HOME</a></li>
+        <li><a href="listings.html" class="hover:underline">LISTINGS</a></li>
+        <li><a href="about.html" class="hover:underline">ABOUT US</a></li>
+        <li><a href="contact.html" class="hover:underline">CONTACT US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="intro-section text-center py-20 bg-blue-100">
+    <video autoplay muted loop>
+      <source src="Assets/GAC_intro.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="content">
+      <h1 class="text-4xl font-bold mb-4 animated-heading">WELCOME TO GAC COMPANY</h1>
+      <p class="text-xl animated-subheading">Find your dream apartment.</p>
+    </div>
+  </div>
+
+  <div class="featured-apartments container mx-auto py-10">
+    <h2 class="text-3xl font-semibold mb-6">Featured Apartments</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="apartment bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-2">Modern Urban Loft</h3>
+        <p class="text-gray-700 mb-1">Location: City Center</p>
+        <p class="text-gray-700">Price: $2500/month</p>
+      </div>
+      <div class="apartment bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-2">Cozy Suburban Home</h3>
+        <p class="text-gray-700 mb-1">Location: Suburbia Estates</p>
+        <p class="text-gray-700">Price: $1800/month</p>
+      </div>
+      <div class="apartment bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-2">Modern City View Apartment</h3>
+        <p class="text-gray-700 mb-1"><strong>Location:</strong> Skyline Towers, Urban District</p>
+        <p class="text-gray-700">Price: $3000/month</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-blue-800 text-white text-center p-6 mt-10">
+    <p class="mb-2">Contact us: gcyprian18@gmail.com</p>
+    <p>&copy; 2024. Developed by GOSBERTH G, ABDUL Y & AGAPITE</p>
+  </footer>
+
+  <script>
+    document.addEventListener('click', function (e) {
+      const ripple = document.createElement('div');
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = '100px';
+      ripple.style.left = `${e.clientX - 50}px`;
+      ripple.style.top = `${e.clientY - 50}px`;
+      document.body.appendChild(ripple);
+
+      ripple.addEventListener('animationend', () => {
+        ripple.remove();
+      });
+    });
+  </script>
+</body>
+</html>
