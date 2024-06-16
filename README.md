@@ -5,29 +5,47 @@ Welcome to GAC Company! This project showcases a website for a real estate compa
 Table of Contents
 
 ⦁	Introduction
+
 ⦁	Features
+
 ⦁	Technologies Used
+
 ⦁	Installation
+
 ⦁	Usage
+
 ⦁	Contributing
+
 ⦁	License
+
 Introduction
+
 
 GAC Company is dedicated to helping users find their dream apartments through a user-friendly website. It includes features such as:
 
 ⦁	Homepage: Introduction to the company and featured apartments.
+
 ⦁	Listings Page: Detailed view of available apartments.
+
 ⦁	About Us Page: Information about the company and its team.
+
 ⦁	Contact Us Page: Form for users to reach out for inquiries and bookings.
 Features
 
 ⦁	Responsive design using Tailwind CSS.
+
 ⦁	Dynamic content loading from a MySQL database.
+
 ⦁	Booking form integration with PHP for apartment reservations.
+
 ⦁	Contact form for user inquiries and messages.
+
 ⦁	Technologies Used
+
 ⦁	Frontend: HTML, CSS (Tailwind CSS), JavaScript (Alpine.js)
+
 ⦁	Backend: PHP
+
 ⦁	Database: MySQL
 
 
