@@ -29,7 +29,7 @@ Installation
 Clone the repository:
 bash
 Copy code
-git clone https://github.com/yourusername/gac-company.git
+git clone https://github.com/Qonteh/PLP_PROJECT.git
 Import the database schema located in database.sql into your MySQL database:
 
 bash
